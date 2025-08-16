@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手工钩织作品集</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #fcf9f5;
+            --secondary-color: #f0e7dd;
+            --accent-color: #d9c6b0;
+            --text-color: #5a4a42;
+            --light-text: #8a7c72;
+            --dark-color: #3d332b;
+            --comment-color: #f8f4ef;
+        }
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+        
+        header {
+            background-color: white;
+            padding: 20px 0;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            color: var(--accent-color);
+            margin-right: 12px;
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 20px auto;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 35px;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .item-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .item-image {
+            transform: scale(1.05);
+        }
+        
+        .item-info {
+            padding: 22px;
+        }
+        
+        .item-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+        
+        .item-info p {
+            color: var(--light-text);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .item-info .date {
+            color: #aaa;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .item-info .date i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+        
+        /* 详情视图样式 */
+        .detail-view {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            padding: 20px;
+            overflow: auto;
+        }
+        
+        .detail-view.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .detail-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 1000px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 0.6s ease;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            background: var(--secondary-color);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .detail-header h2 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+        }
+        
+        .close-detail {
+            background: transparent;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-detail:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: rotate(90deg);
+        }
+        
+        .detail-body {
+            display: flex;
+            flex-wrap: wrap;
+            overflow-y: auto;
+        }
+        
+        .detail-image {
+            flex: 1;
+            min-width: 350px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fcf9f5;
+        }
+        
+        .detail-image img {
+            max-width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .detail-text {
+            flex: 1;
+            min-width: 350px;
+            padding: 30px;
+        }
+        
+        .detail-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .detail-text h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+        
+        .detail-text p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+        }
+        
+        .work-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            background: var(--secondary-color);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .meta-item i {
+            color: var(--accent-color);
+            margin-right: 8px;
+        }
+        
+        /* 评论区样式 */
+        .comments-section {
+            background: var(--comment-color);
+            padding: 30px;
+            border-top: 1px solid #eee;
+        }
+        
+        .comments-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .comments-section h3 i {
+            margin-right: 12px;
+            color: var(--accent-color);
+        }
+        
+        .comments-list {
+            margin-bottom: 30px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .comment {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .comment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .comment-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), #c7b299);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+        
+        .comment-author {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .comment-date {
+            color: #aaa;
+            font-size: 0.85rem;
+            margin-top: 3px;
+        }
+        
+        .comment-content {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        
+        .comment-form {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #e6e1d9;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #fcfbf9;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(217, 198, 176, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Quicksand', sans-serif;
+        }
+        
+        .submit-btn i {
+            margin-right: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: #c7b299;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 联系方式 */
+        .contact-section {
+            background: linear-gradient(135deg, var(--secondary-color), #e9dfd3);
+            border-radius: 15px;
+            padding: 60px 40px;
+            margin: 80px 0 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section:before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='rgba(217, 198, 176, 0.1)' d='M48.2,-50.6C61.2,-37.2,69.1,-18.6,68.1,-0.7C67.2,17.2,57.4,34.4,44.4,45.1C31.4,55.8,15.7,59.9,-1.7,61.6C-19.1,63.3,-38.2,62.6,-51.8,51.9C-65.3,41.2,-73.3,20.6,-73.5,-0.1C-73.7,-20.8,-66.1,-41.6,-52.5,-55C-38.9,-68.4,-19.5,-74.4,-0.4,-74C18.7,-73.6,37.4,-66.8,48.2,-50.6Z' transform='translate(100 100)'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+        }
+        
+        .contact-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .contact-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+        
+        .contact-email {
+            font-size: 1.4rem;
+            margin: 30px 0;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 15px 40px;
+            border-radius: 50px;
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(217, 198, 176, 0.3);
+        }
+        
+        .contact-email:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-email i {
+            margin-right: 12px;
+            color: var(--accent-color);
+        }
+        
+        .contact-text {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--light-text);
+        }
+        
+        /* 页脚 */
+        footer {
+            background: var(--dark-color);
+            color: #e9dfd3;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            font-size: 1rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .copyright {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 900px) {
+            .detail-body {
+                flex-direction: column;
+            }
+            
+            .detail-image, .detail-text {
+                min-width: 100%;
+            }
+            
+            .detail-image {
+                padding: 20px;
+            }
+            
+            .detail-image img {
+                max-height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                justify-content: center;
+                margin-top: 10px;
+            }
+            
+            nav li {
+                margin: 0 15px;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 25px;
+            }
+            
+            .contact-section {
+                padding: 40px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav li {
+                margin: 8px 10px;
+            }
+            
+            .section-title h1 {
+                font-size: 2.4rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-email {
+                font-size: 1.1rem;
+                padding: 12px 25px;
+            }
+            
+            .detail-header {
+                padding: 15px;
+            }
+            
+            .detail-header h2 {
+                font-size: 1.4rem;
+            }
+            
+            .detail-text, .comments-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-crochet"></i>
+                <span>手工钩织艺术</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#portfolio">作品集</a></li>
+                    <li><a href="#contact">联系方式</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section id="portfolio">
+            <div class="section-title">
+                <h1>手工钩织作品集</h1>
+                <div class="divider"></div>
+                <p>每一件作品都是用心编织的艺术品，传递着手工的温暖与独特魅力</p>
+            </div>
+            
+            <div class="gallery">
+                <!-- 作品 1 -->
+                <div class="gallery-item" data-id="1">
+                    <img src="https://images.unsplash.com/photo-1596466596120-2a8e4b5d3a1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="钩织小熊" class="item-image">
+                    <div class="item-info">
+                        <h3>森林小熊</h3>
+                        <p>使用纯棉线手工钩织，温暖陪伴的完美伙伴</p>
+                        <div class="date">
+                            <i class="far fa-calendar"></i> 2023年10月制作
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 作品 2 -->
+                <div class="gallery-item" data-id="2">
+                    <img src="https://images.unsplash.com/photo-1614179689702-355944cd0918?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="钩织毯子" class="item-image">
+                    <div class="item-info">
+                        <h3>彩虹毯子</h3>
+                        <p>多彩羊毛混纺钩织毯，为家居增添温暖色彩</p>
+                        <div class="date">
+                            <i class="far fa-calendar"></i> 2023年8月制作
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 作品 3 -->
+                <div class="gallery-item" data-id="3">
+                    <img src="https://images.unsplash.com/photo-1587314168485-3236d67108c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="钩织包包" class="item-image">
+                    <div class="item-info">
+                        <h3>夏日草编包</h3>
+                        <p>棉麻混纺材质，手工钩编时尚手提包</p>
+                        <div class="date">
+                            <i class="far fa-calendar"></i> 2023年7月制作
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 联系方式部分 -->
+        <section id="contact">
+            <div class="contact-section">
+                <h2>联系创作者</h2>
+                <a href="mailto:crochet.artist@example.com" class="contact-email">
+                    <i class="fas fa-envelope"></i> crochet.artist@example.com
+                </a>
+                <p class="contact-text">
+                    如果您对任何作品感兴趣，或者有定制需求，欢迎通过邮件与我联系。我会尽快回复您的咨询，
+                    并为您提供专业的建议和服务。每一件作品都可以根据您的需求进行个性化定制。
+                </p>
+            </div>
+        </section>
+    </div>
+    
+    <!-- 详情视图 -->
+    <div class="detail-view" id="detailView">
+        <div class="detail-content">
+            <div class="detail-header">
+                <h2 id="detailTitle">森林小熊</h2>
+                <button class="close-detail">&times;</button>
+            </div>
+            
+            <div class="detail-body">
+                <div class="detail-image">
+                    <img id="detailImage" src="https://images.unsplash.com/photo-1596466596120-2a8e4b5d3a1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="作品大图">
+                </div>
+                
+                <div class="detail-text">
+                    <h3>作品详情</h3>
+                    <p id="detailDescription">
+                        这款森林小熊使用高品质纯棉线手工钩织而成，高约25厘米。小熊采用棕色和米色搭配，
+                        眼睛和鼻子使用安全纽扣缝制，确保儿童使用安全。每一个小熊都经过精心制作，
+                        确保针脚均匀紧密，手感柔软舒适。
+                    </p>
+                    
+                    <div class="work-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-ruler-combined"></i> 尺寸: <span id="detailSize">25cm</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-palette"></i> 颜色: <span id="detailColor">棕色/米色</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i> 制作日期: <span id="detailDate">2023年10月</span>
+                        </div>
+                    </div>
+                    
+                    <div class="comments-section">
+                        <h3><i class="fas fa-comments"></i> 作品评论 <span id="commentsCount">(5)</span></h3>
+                        
+                        <div class="comments-list" id="commentsList">
+                            <div class="comment">
+                                <div class="comment-header">
+                                    <div class="comment-avatar">L</div>
+                                    <div>
+                                        <div class="comment-author">李女士</div>
+                                        <div class="comment-date">2023年11月15日</div>
+                                    </div>
+                                </div>
+                                <div class="comment-content">
+                                    这个小熊太可爱了！我买了一个送给女儿，她爱不释手，每天都要抱着睡觉。
+                                    手工非常精致，针脚细密，质量很好！
+                                </div>
+                            </div>
+                            
+                            <div class="comment">
+                                <div class="comment-header">
+                                    <div class="comment-avatar">W</div>
+                                    <div>
+                                        <div class="comment-author">王小姐</div>
+                                        <div class="comment-date">2023年11月10日</div>
+                                    </div>
+                                </div>
+                                <div class="comment-content">
+                                    作为手工爱好者，这个小熊的细节处理让我印象深刻！特别是耳朵和脚的形状，
+                                    钩得非常完美。期待看到更多作品！
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comment-form">
+                            <h3>发表您的评论</h3>
+                            <form id="commentForm">
+                                <div class="form-group">
+                                    <label for="commentName">您的姓名</label>
+                                    <input type="text" id="commentName" class="form-control" placeholder="例如：张先生" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="commentText">评论内容</label>
+                                    <textarea id="commentText" class="form-control" placeholder="分享您对这件作品的看法..." required></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn">
+                                    <i class="fas fa-paper-plane"></i> 提交评论
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                &copy; 2023 手工钩织艺术 | 用心编织每一份温暖
+            </div>
+            <p>所有作品均为手工制作，版权所有</p>
+        </div>
+    </footer>
+    
+    <script>
+        // 作品数据
+        const works = {
+            1: {
+                title: "森林小熊",
+                description: "这款森林小熊使用高品质纯棉线手工钩织而成，高约25厘米。小熊采用棕色和米色搭配，眼睛和鼻子使用安全纽扣缝制，确保儿童使用安全。每一个小熊都经过精心制作，确保针脚均匀紧密，手感柔软舒适。",
+                size: "25cm",
+                color: "棕色/米色",
+                date: "2023年10月",
+                img: "https://images.unsplash.com/photo-1596466596120-2a8e4b5d3a1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                comments: 5
+            },
+            2: {
+                title: "彩虹毯子",
+                description: "这款彩虹毯子使用羊毛混纺线手工钩织而成，尺寸为120x150厘米。采用七种柔和的彩虹色设计，每一行都精心编织，确保毯子柔软舒适且耐用。毯子边缘采用特殊的锁边设计，增加了耐用性和美观度。",
+                size: "120x150cm",
+                color: "彩虹七色",
+                date: "2023年8月",
+                img: "https://images.unsplash.com/photo-1614179689702-355944cd0918?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                comments: 7
+            },
+            3: {
+                title: "夏日草编包",
+                description: "夏日草编包采用棉麻混纺材质手工钩编而成，包身设计有独特的镂空花纹，既美观又透气。包包配有内衬和拉链袋，增加了实用性。手柄采用双层编织设计，结实耐用，可轻松容纳日常必需品。",
+                size: "30x35cm",
+                color: "米白色",
+                date: "2023年7月",
+                img: "https://images.unsplash.com/photo-1587314168485-3236d67108c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                comments: 4
+            }
+        };
+
+        // 获取DOM元素
+        const detailView = document.getElementById('detailView');
+        const detailTitle = document.getElementById('detailTitle');
+        const detailImage = document.getElementById('detailImage');
+        const detailDescription = document.getElementById('detailDescription');
+        const detailSize = document.getElementById('detailSize');
+        const detailColor = document.getElementById('detailColor');
+        const detailDate = document.getElementById('detailDate');
+        const commentsCount = document.getElementById('commentsCount');
+        const commentsList = document.getElementById('commentsList');
+        const closeBtn = document.querySelector('.close-detail');
+        const commentForm = document.getElementById('commentForm');
+
+        // 为每个作品添加点击事件
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                const work = works[id];
+                
+                // 更新详情内容
+                detailTitle.textContent = work.title;
+                detailImage.src = work.img;
+                detailDescription.textContent = work.description;
+                detailSize.textContent = work.size;
+                detailColor.textContent = work.color;
+                detailDate.textContent = work.date;
+                commentsCount.textContent = `(${work.comments})`;
+                
+                // 显示详情视图
+                detailView.classList.add('active');
+                document.body.style.overflow = 'hidden'; // 防止背景滚动
+            });
+        });
+
+        // 关闭详情视图
+        closeBtn.addEventListener('click', function() {
+            detailView.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // 点击详情视图背景关闭
+        detailView.addEventListener('click', function(e) {
+            if (e.target === detailView) {
+                detailView.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // 评论提交
+        commentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('commentName').value;
+            const comment = document.getElementById('commentText').value;
+            
+            if (name && comment) {
+                // 创建新评论
+                const newComment = document.createElement('div');
+                newComment.className = 'comment';
+                
+                // 生成随机头像字母
+                const avatarLetter = name.charAt(0).toUpperCase();
+                
+                newComment.innerHTML = `
+                    <div class="comment-header">
+                        <div class="comment-avatar">${avatarLetter}</div>
+                        <div>
+                            <div class="comment-author">${name}</div>
+                            <div class="comment-date">${new Date().toLocaleDateString('zh-CN')}</div>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        ${comment}
+                    </div>
+                `;
+                
+                // 添加到评论列表顶部
+                commentsList.insertBefore(newComment, commentsList.firstChild);
+                
+                // 更新评论计数
+                const currentComments = parseInt(commentsCount.textContent.replace(/[()]/g, ''));
+                commentsCount.textContent = `(${currentComments + 1})`;
+                
+                // 重置表单
+                document.getElementById('commentName').value = '';
+                document.getElementById('commentText').value = '';
+                
+                // 显示成功消息
+                alert('您的评论已提交，感谢您的反馈！');
+            }
+        });
+    </script>
+</body>
+</html>
