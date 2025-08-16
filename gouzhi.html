@@ -123,6 +123,7 @@
             position: relative;
             height: 250px;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .work-image {
@@ -134,18 +135,6 @@
 
         .work-card:hover .work-image {
             transform: scale(1.05);
-        }
-
-        .image-count {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            z-index: 10;
         }
 
         .work-info {
@@ -307,26 +296,6 @@
             line-height: 1.5;
         }
 
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .gallery-image {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .gallery-image:hover {
-            transform: scale(1.05);
-        }
-
         .modal {
             display: none;
             position: fixed;
@@ -343,6 +312,8 @@
         .modal-content {
             max-width: 90%;
             max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
 
         .close {
@@ -353,6 +324,65 @@
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: var(--primary);
+        }
+        
+        /* 联系信息区域 */
+        .contact-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .contact-section h3 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--dark);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .contact-info p {
+            margin: 1.5rem 0;
+        }
+        
+        .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .email-link:hover {
+            background: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .email-link i {
+            font-size: 1.3rem;
         }
 
         footer {
@@ -401,8 +431,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .image-gallery {
-                grid-template-columns: repeat(2, 1fr);
+            .contact-section {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -425,27 +455,20 @@
             <!-- 作品1 -->
             <div class="work-card">
                 <div class="image-container">
-                    <img src="https://youke1.picui.cn/s1/2025/08/16/68a08e980cd3b.jpg" alt="钩织熊猫玩偶" class="work-image">
-                    <div class="image-count"><i class="fas fa-images"></i> 5张</div>
+                    <img src="https://images.unsplash.com/photo-1578991624411-76c1bcfbc1c2?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="钩织熊猫玩偶" class="work-image">
                 </div>
                 <div class="work-info">
-                    <h3 class="work-title">飞行员帽</h3>
+                    <h3 class="work-title">熊猫宝宝</h3>
                     <div class="work-meta">
                         <span><i class="far fa-calendar"></i> 2023-08-10</span>
                         <span><i class="far fa-clock"></i> 25小时</span>
                     </div>
-                    <p class="work-description">可爱的飞行员帽。</p>
-                    <button class="view-btn view-comments" data-id="1">查看详情与评论</button>
+                    <p class="work-description">可爱的熊猫宝宝玩偶，采用优质棉线钩织，手感柔软舒适，适合作为礼物送给小朋友。</p>
+                    <button class="view-btn view-comments" data-id="1">查看评论</button>
                 </div>
                 
                 <div class="comments-section" id="comments-1">
-                    <h3><i class="far fa-comments"></i> "飞行员帽" 作品评论</h3>
-                    
-                    <div class="image-gallery">
-                        <img src="https://youke1.picui.cn/s1/2025/08/16/68a08e980cd3b.jpg" alt="飞行员帽" class="gallery-image">
-                        <img src="https://youke1.picui.cn/s1/2025/08/16/68a08e980cd3b.jpg" alt="飞行员帽" class="gallery-image">
-                        <img src="https://youke1.picui.cn/s1/2025/08/16/68a08e980cd3b.jpg" alt="飞行员帽" class="gallery-image">
-                    </div>
+                    <h3><i class="far fa-comments"></i> "熊猫宝宝" 作品评论</h3>
                     
                     <form class="comment-form">
                         <input type="text" class="comment-input" placeholder="分享您的想法...">
@@ -460,7 +483,7 @@
                                     <span class="comment-author">李梅</span>
                                     <span class="comment-date">2023-08-15 14:30</span>
                                 </div>
-                                <p class="comment-text">太可爱了！请问这个飞行员帽有制作教程吗？想学着给女儿做一个。</p>
+                                <p class="comment-text">太可爱了！请问这个熊猫宝宝有制作教程吗？想学着给女儿做一个。</p>
                             </div>
                         </div>
                         
@@ -493,7 +516,6 @@
             <div class="work-card">
                 <div class="image-container">
                     <img src="https://images.unsplash.com/photo-1527865118650-b28bc059d09a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="钩织花束" class="work-image">
-                    <div class="image-count"><i class="fas fa-images"></i> 7张</div>
                 </div>
                 <div class="work-info">
                     <h3 class="work-title">永恒花束</h3>
@@ -502,17 +524,11 @@
                         <span><i class="far fa-clock"></i> 40小时</span>
                     </div>
                     <p class="work-description">永不凋谢的钩织花束，包含玫瑰、向日葵和雏菊，为家居增添温馨氛围。</p>
-                    <button class="view-btn view-comments" data-id="2">查看详情与评论</button>
+                    <button class="view-btn view-comments" data-id="2">查看评论</button>
                 </div>
                 
                 <div class="comments-section" id="comments-2">
                     <h3><i class="far fa-comments"></i> "永恒花束" 作品评论</h3>
-                    
-                    <div class="image-gallery">
-                        <img src="https://images.unsplash.com/photo-1527865118650-b28bc059d09a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="花束全景" class="gallery-image">
-                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="玫瑰特写" class="gallery-image">
-                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="向日葵特写" class="gallery-image">
-                    </div>
                     
                     <form class="comment-form">
                         <input type="text" class="comment-input" placeholder="分享您的想法...">
@@ -549,7 +565,6 @@
             <div class="work-card">
                 <div class="image-container">
                     <img src="https://images.unsplash.com/photo-1596466596120-2a8e4b5d9a86?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="钩织毯子" class="work-image">
-                    <div class="image-count"><i class="fas fa-images"></i> 6张</div>
                 </div>
                 <div class="work-info">
                     <h3 class="work-title">彩虹毯</h3>
@@ -558,17 +573,11 @@
                         <span><i class="far fa-clock"></i> 120小时</span>
                     </div>
                     <p class="work-description">渐变彩虹色钩织毯，采用优质羊毛线，保暖舒适，尺寸150x200cm。</p>
-                    <button class="view-btn view-comments" data-id="3">查看详情与评论</button>
+                    <button class="view-btn view-comments" data-id="3">查看评论</button>
                 </div>
                 
                 <div class="comments-section" id="comments-3">
                     <h3><i class="far fa-comments"></i> "彩虹毯" 作品评论</h3>
-                    
-                    <div class="image-gallery">
-                        <img src="https://images.unsplash.com/photo-1596466596120-2a8e4b5d9a86?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="毯子全景" class="gallery-image">
-                        <img src="https://images.unsplash.com/photo-1534337621606-e3df5ee0e97f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="细节特写" class="gallery-image">
-                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="使用场景" class="gallery-image">
-                    </div>
                     
                     <form class="comment-form">
                         <input type="text" class="comment-input" placeholder="分享您的想法...">
@@ -611,52 +620,19 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- 作品4 -->
-            <div class="work-card">
-                <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="钩织围巾" class="work-image">
-                    <div class="image-count"><i class="fas fa-images"></i> 4张</div>
-                </div>
-                <div class="work-info">
-                    <h3 class="work-title">冬日暖阳围巾</h3>
-                    <div class="work-meta">
-                        <span><i class="far fa-calendar"></i> 2023-05-20</span>
-                        <span><i class="far fa-clock"></i> 35小时</span>
-                    </div>
-                    <p class="work-description">温暖舒适的羊毛围巾，采用双色条纹设计，长180cm，宽25cm。</p>
-                    <button class="view-btn view-comments" data-id="4">查看详情与评论</button>
-                </div>
-                
-                <div class="comments-section" id="comments-4">
-                    <h3><i class="far fa-comments"></i> "冬日暖阳围巾" 作品评论</h3>
-                    
-                    <div class="image-gallery">
-                        <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="围巾全景" class="gallery-image">
-                        <img src="https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="围巾细节" class="gallery-image">
-                        <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="佩戴效果" class="gallery-image">
-                    </div>
-                    
-                    <form class="comment-form">
-                        <input type="text" class="comment-input" placeholder="分享您的想法...">
-                        <button type="submit" class="comment-btn">评论</button>
-                    </form>
-                    
-                    <div class="comment-list">
-                        <div class="comment">
-                            <div class="comment-avatar">周</div>
-                            <div class="comment-content">
-                                <div class="comment-header">
-                                    <span class="comment-author">周华</span>
-                                    <span class="comment-date">2023-06-02 10:45</span>
-                                </div>
-                                <p class="comment-text">这个围巾看起来好温暖！请问是什么材质的？</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+        
+        <!-- 联系信息区域 -->
+        <section class="contact-section">
+            <h3><i class="fas fa-envelope"></i> 联系我</h3>
+            <div class="contact-info">
+                <p>如果您对我的作品感兴趣，想要定制钩织作品或咨询相关问题，欢迎随时联系我！</p>
+                <a href="mailto:tiezhu.crochet@example.com" class="email-link">
+                    <i class="fas fa-envelope"></i> tiezhu.crochet@example.com
+                </a>
+                <p>我通常会在24小时内回复您的邮件。您也可以关注我的社交媒体账号获取最新作品更新。</p>
+            </div>
+        </section>
     </div>
 
     <div class="modal" id="imageModal">
@@ -764,10 +740,12 @@
             const modalImg = document.getElementById('modalImage');
             const closeModal = document.querySelector('.close');
             
-            document.querySelectorAll('.gallery-image').forEach(img => {
-                img.addEventListener('click', function() {
+            // 为所有作品图片添加点击事件
+            document.querySelectorAll('.image-container').forEach(container => {
+                container.addEventListener('click', function() {
+                    const img = this.querySelector('img');
                     modal.style.display = 'flex';
-                    modalImg.src = this.src;
+                    modalImg.src = img.src;
                 });
             });
             
