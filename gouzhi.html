@@ -3,977 +3,783 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>手工钩织作品集</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>铁柱的钩织作品集</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         :root {
-            --primary-color: #fcf9f5;
-            --secondary-color: #f0e7dd;
-            --accent-color: #d9c6b0;
-            --text-color: #5a4a42;
-            --light-text: #8a7c72;
-            --dark-color: #3d332b;
-            --comment-color: #f8f4ef;
+            --primary: #e8b4b8;
+            --secondary: #c5a5c9;
+            --accent: #8a9ea7;
+            --light: #f8f1e9;
+            --dark: #5d576b;
+            --text: #3a3a3a;
         }
-        
+
         body {
             font-family: 'Quicksand', sans-serif;
-            background-color: var(--primary-color);
-            color: var(--text-color);
+            color: var(--text);
+            background-color: var(--light);
             line-height: 1.6;
-            padding-top: 80px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M10,10 C15,5 25,5 30,10 C35,15 45,15 50,10 C55,5 65,5 70,10 C75,15 85,15 90,10 C95,5 95,15 90,20 C85,25 75,25 70,30 C65,35 55,35 50,30 C45,25 35,25 30,20 C25,15 15,15 10,20 C5,25 5,15 10,10 Z" fill="none" stroke="rgba(232, 180, 184, 0.1)" stroke-width="1"/></svg>');
         }
-        
+
         header {
-            background-color: white;
-            padding: 20px 0;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: var(--dark-color);
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo i {
-            color: var(--accent-color);
-            margin-right: 12px;
-            font-size: 1.8rem;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav li {
-            margin-left: 30px;
-        }
-        
-        nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            font-size: 1.1rem;
-            position: relative;
-            padding: 5px 0;
-            transition: color 0.3s;
-        }
-        
-        nav a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transition: width 0.3s;
-        }
-        
-        nav a:hover {
-            color: var(--accent-color);
-        }
-        
-        nav a:hover:after {
-            width: 100%;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        
-        .section-title {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 1.5rem 0;
             text-align: center;
-            margin-bottom: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
-        
-        .section-title h1 {
-            font-family: 'Dancing Script', cursive;
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,0 L100,100 M100,0 L0,100" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></svg>');
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .logo {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3.2rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo i {
+            margin-right: 10px;
             font-size: 2.8rem;
-            color: var(--dark-color);
-            margin-bottom: 15px;
         }
-        
-        .section-title p {
-            color: var(--light-text);
+
+        .tagline {
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto;
         }
-        
-        .divider {
-            width: 80px;
-            height: 3px;
-            background: var(--accent-color);
-            margin: 20px auto;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
-        
+
+        .intro {
+            text-align: center;
+            margin: 2rem 0 3rem;
+            padding: 0 1rem;
+        }
+
+        .intro h2 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--dark);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 35px;
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
-        
-        .gallery-item {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-        }
-        
-        .item-image {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-item:hover .item-image {
-            transform: scale(1.05);
-        }
-        
-        .item-info {
-            padding: 22px;
-        }
-        
-        .item-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: var(--dark-color);
-            font-weight: 600;
-        }
-        
-        .item-info p {
-            color: var(--light-text);
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        
-        .item-info .date {
-            color: #aaa;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .item-info .date i {
-            margin-right: 8px;
-            color: var(--accent-color);
-        }
-        
-        /* 详情视图样式 */
-        .detail-view {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            padding: 20px;
-            overflow: auto;
-        }
-        
-        .detail-view.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .detail-content {
-            background: white;
-            border-radius: 20px;
-            max-width: 1000px;
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            animation: fadeIn 0.6s ease;
-            display: flex;
-            flex-direction: column;
-            max-height: 90vh;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .detail-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px;
-            background: var(--secondary-color);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        
-        .detail-header h2 {
-            font-size: 1.8rem;
-            color: var(--dark-color);
-        }
-        
-        .close-detail {
-            background: transparent;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark-color);
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .close-detail:hover {
-            background: var(--accent-color);
-            color: white;
-            transform: rotate(90deg);
-        }
-        
-        .detail-body {
-            display: flex;
-            flex-wrap: wrap;
-            overflow-y: auto;
-        }
-        
-        .detail-image {
-            flex: 1;
-            min-width: 350px;
-            padding: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #fcf9f5;
-        }
-        
-        .detail-image img {
-            max-width: 100%;
-            max-height: 500px;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .detail-text {
-            flex: 1;
-            min-width: 350px;
-            padding: 30px;
-        }
-        
-        .detail-text h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--dark-color);
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .detail-text h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--accent-color);
-        }
-        
-        .detail-text p {
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--text-color);
-        }
-        
-        .work-meta {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-        
-        .meta-item {
-            background: var(--secondary-color);
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .meta-item i {
-            color: var(--accent-color);
-            margin-right: 8px;
-        }
-        
-        /* 评论区样式 */
-        .comments-section {
-            background: var(--comment-color);
-            padding: 30px;
-            border-top: 1px solid #eee;
-        }
-        
-        .comments-section h3 {
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            color: var(--dark-color);
-            display: flex;
-            align-items: center;
-        }
-        
-        .comments-section h3 i {
-            margin-right: 12px;
-            color: var(--accent-color);
-        }
-        
-        .comments-list {
-            margin-bottom: 30px;
-            max-height: 300px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-        
-        .comment {
+
+        .work-card {
             background: white;
             border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
         }
-        
-        .comment-header {
+
+        .work-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .work-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .work-card:hover .work-image {
+            transform: scale(1.05);
+        }
+
+        .image-count {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        .work-info {
+            padding: 1.5rem;
+        }
+
+        .work-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .work-meta {
             display: flex;
-            align-items: center;
-            margin-bottom: 15px;
+            justify-content: space-between;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
         }
-        
+
+        .work-description {
+            margin-bottom: 1.2rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .view-btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--accent);
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            cursor: pointer;
+        }
+
+        .view-btn:hover {
+            background: var(--dark);
+        }
+
+        .comments-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin-top: 1.5rem;
+            display: none;
+        }
+
+        .comments-section.active {
+            display: block;
+        }
+
+        .comments-section h3 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--dark);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .comment-form {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .comment-input {
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .comment-input:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        .comment-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0 1.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .comment-btn:hover {
+            background: var(--primary);
+        }
+
+        .comment-list {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .comment {
+            display: flex;
+            gap: 1rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+        }
+
         .comment-avatar {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-color), #c7b299);
+            background: var(--accent);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
             font-size: 1.2rem;
-            margin-right: 15px;
+            flex-shrink: 0;
         }
-        
+
+        .comment-content {
+            flex: 1;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
         .comment-author {
             font-weight: 600;
-            color: var(--dark-color);
+            color: var(--dark);
         }
-        
+
         .comment-date {
-            color: #aaa;
+            color: #999;
             font-size: 0.85rem;
-            margin-top: 3px;
         }
-        
-        .comment-content {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text-color);
+
+        .comment-text {
+            color: #555;
+            line-height: 1.5;
         }
-        
-        .comment-form {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
         }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark-color);
-        }
-        
-        .form-control {
+
+        .gallery-image {
             width: 100%;
-            padding: 14px 18px;
-            border: 1px solid #e6e1d9;
+            height: 120px;
+            object-fit: cover;
             border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s;
-            background: #fcfbf9;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(217, 198, 176, 0.2);
-        }
-        
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
+            transition: transform 0.3s;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
             align-items: center;
-            font-family: 'Quicksand', sans-serif;
         }
-        
-        .submit-btn i {
-            margin-right: 10px;
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
         }
-        
-        .submit-btn:hover {
-            background: #c7b299;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* 联系方式 */
-        .contact-section {
-            background: linear-gradient(135deg, var(--secondary-color), #e9dfd3);
-            border-radius: 15px;
-            padding: 60px 40px;
-            margin: 80px 0 40px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-section:before {
-            content: '';
+
+        .close {
             position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='rgba(217, 198, 176, 0.1)' d='M48.2,-50.6C61.2,-37.2,69.1,-18.6,68.1,-0.7C67.2,17.2,57.4,34.4,44.4,45.1C31.4,55.8,15.7,59.9,-1.7,61.6C-19.1,63.3,-38.2,62.6,-51.8,51.9C-65.3,41.2,-73.3,20.6,-73.5,-0.1C-73.7,-20.8,-66.1,-41.6,-52.5,-55C-38.9,-68.4,-19.5,-74.4,-0.4,-74C18.7,-73.6,37.4,-66.8,48.2,-50.6Z' transform='translate(100 100)'/%3E%3C/svg%3E");
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.3;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
         }
-        
-        .contact-section h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.4rem;
-            margin-bottom: 20px;
-            color: var(--dark-color);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .contact-section h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--accent-color);
-        }
-        
-        .contact-email {
-            font-size: 1.4rem;
-            margin: 30px 0;
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.6);
-            padding: 15px 40px;
-            border-radius: 50px;
-            color: var(--dark-color);
-            text-decoration: none;
-            transition: all 0.3s;
-            border: 1px solid rgba(217, 198, 176, 0.3);
-        }
-        
-        .contact-email:hover {
-            background: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        }
-        
-        .contact-email i {
-            margin-right: 12px;
-            color: var(--accent-color);
-        }
-        
-        .contact-text {
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--light-text);
-        }
-        
-        /* 页脚 */
+
         footer {
-            background: var(--dark-color);
-            color: #e9dfd3;
+            background: var(--dark);
+            color: white;
             text-align: center;
-            padding: 30px 0;
-            margin-top: 60px;
-            font-size: 1rem;
+            padding: 2rem;
+            margin-top: 4rem;
         }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
         }
-        
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            color: var(--primary);
+        }
+
         .copyright {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
         }
-        
-        /* 响应式设计 */
-        @media (max-width: 900px) {
-            .detail-body {
-                flex-direction: column;
-            }
-            
-            .detail-image, .detail-text {
-                min-width: 100%;
-            }
-            
-            .detail-image {
-                padding: 20px;
-            }
-            
-            .detail-image img {
-                max-height: 400px;
-            }
-        }
-        
+
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
             }
             
             .logo {
-                margin-bottom: 15px;
+                font-size: 2.5rem;
             }
             
-            nav ul {
-                justify-content: center;
-                margin-top: 10px;
-            }
-            
-            nav li {
-                margin: 0 15px;
-            }
-            
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 25px;
-            }
-            
-            .contact-section {
-                padding: 40px 20px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            nav ul {
-                flex-wrap: wrap;
-            }
-            
-            nav li {
-                margin: 8px 10px;
-            }
-            
-            .section-title h1 {
-                font-size: 2.4rem;
-            }
-            
-            .gallery {
+            .comment-form {
                 grid-template-columns: 1fr;
             }
             
-            .contact-email {
-                font-size: 1.1rem;
-                padding: 12px 25px;
-            }
-            
-            .detail-header {
-                padding: 15px;
-            }
-            
-            .detail-header h2 {
-                font-size: 1.4rem;
-            }
-            
-            .detail-text, .comments-section {
-                padding: 20px;
+            .image-gallery {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="header-content">
-            <div class="logo">
-                <i class="fas fa-crochet"></i>
-                <span>手工钩织艺术</span>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#portfolio">作品集</a></li>
-                    <li><a href="#contact">联系方式</a></li>
-                </ul>
-            </nav>
+        <div class="container">
+            <h1 class="logo"><i class="fas fa-crochet"></i>铁柱的钩织作品集</h1>
+            <p class="tagline">一针一线，钩织生活的温度与色彩</p>
         </div>
     </header>
-    
+
     <div class="container">
-        <section id="portfolio">
-            <div class="section-title">
-                <h1>手工钩织作品集</h1>
-                <div class="divider"></div>
-                <p>每一件作品都是用心编织的艺术品，传递着手工的温暖与独特魅力</p>
-            </div>
-            
-            <div class="gallery">
-                <!-- 作品 1 -->
-                <div class="gallery-item" data-id="1">
-                    <img src="https://images.unsplash.com/photo-1596466596120-2a8e4b5d3a1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="钩织小熊" class="item-image">
-                    <div class="item-info">
-                        <h3>森林小熊</h3>
-                        <p>使用纯棉线手工钩织，温暖陪伴的完美伙伴</p>
-                        <div class="date">
-                            <i class="far fa-calendar"></i> 2023年10月制作
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 作品 2 -->
-                <div class="gallery-item" data-id="2">
-                    <img src="https://images.unsplash.com/photo-1614179689702-355944cd0918?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="钩织毯子" class="item-image">
-                    <div class="item-info">
-                        <h3>彩虹毯子</h3>
-                        <p>多彩羊毛混纺钩织毯，为家居增添温暖色彩</p>
-                        <div class="date">
-                            <i class="far fa-calendar"></i> 2023年8月制作
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 作品 3 -->
-                <div class="gallery-item" data-id="3">
-                    <img src="https://images.unsplash.com/photo-1587314168485-3236d67108c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="钩织包包" class="item-image">
-                    <div class="item-info">
-                        <h3>夏日草编包</h3>
-                        <p>棉麻混纺材质，手工钩编时尚手提包</p>
-                        <div class="date">
-                            <i class="far fa-calendar"></i> 2023年7月制作
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section class="intro">
+            <h2>钩织的艺术世界</h2>
+            <p>欢迎来到铁柱的钩织作品集！这里展示了我多年来精心创作的钩织作品，每一件都蕴含着独特的创意和手工的温度。从可爱的玩偶到实用的家居用品，每一针每一线都倾注了我的心血与热爱。</p>
         </section>
-        
-        <!-- 联系方式部分 -->
-        <section id="contact">
-            <div class="contact-section">
-                <h2>联系创作者</h2>
-                <a href="mailto:crochet.artist@example.com" class="contact-email">
-                    <i class="fas fa-envelope"></i> crochet.artist@example.com
-                </a>
-                <p class="contact-text">
-                    如果您对任何作品感兴趣，或者有定制需求，欢迎通过邮件与我联系。我会尽快回复您的咨询，
-                    并为您提供专业的建议和服务。每一件作品都可以根据您的需求进行个性化定制。
-                </p>
-            </div>
-        </section>
-    </div>
-    
-    <!-- 详情视图 -->
-    <div class="detail-view" id="detailView">
-        <div class="detail-content">
-            <div class="detail-header">
-                <h2 id="detailTitle">森林小熊</h2>
-                <button class="close-detail">&times;</button>
-            </div>
-            
-            <div class="detail-body">
-                <div class="detail-image">
-                    <img id="detailImage" src="https://images.unsplash.com/photo-1596466596120-2a8e4b5d3a1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="作品大图">
+
+        <div class="gallery">
+            <!-- 作品1 -->
+            <div class="work-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1578991624411-76c1bcfbc1c2?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="钩织熊猫玩偶" class="work-image">
+                    <div class="image-count"><i class="fas fa-images"></i> 5张</div>
                 </div>
-                
-                <div class="detail-text">
-                    <h3>作品详情</h3>
-                    <p id="detailDescription">
-                        这款森林小熊使用高品质纯棉线手工钩织而成，高约25厘米。小熊采用棕色和米色搭配，
-                        眼睛和鼻子使用安全纽扣缝制，确保儿童使用安全。每一个小熊都经过精心制作，
-                        确保针脚均匀紧密，手感柔软舒适。
-                    </p>
-                    
+                <div class="work-info">
+                    <h3 class="work-title">熊猫宝宝</h3>
                     <div class="work-meta">
-                        <div class="meta-item">
-                            <i class="fas fa-ruler-combined"></i> 尺寸: <span id="detailSize">25cm</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fas fa-palette"></i> 颜色: <span id="detailColor">棕色/米色</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fas fa-calendar"></i> 制作日期: <span id="detailDate">2023年10月</span>
-                        </div>
+                        <span><i class="far fa-calendar"></i> 2023-08-10</span>
+                        <span><i class="far fa-clock"></i> 25小时</span>
+                    </div>
+                    <p class="work-description">可爱的熊猫宝宝玩偶，采用优质棉线钩织，手感柔软舒适，适合作为礼物送给小朋友。</p>
+                    <button class="view-btn view-comments" data-id="1">查看详情与评论</button>
+                </div>
+                
+                <div class="comments-section" id="comments-1">
+                    <h3><i class="far fa-comments"></i> "熊猫宝宝" 作品评论</h3>
+                    
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1578991624411-76c1bcfbc1c2?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="熊猫正面" class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1598940603846-a1edd0ef5274?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="熊猫侧面" class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1596466596120-2a8e4b5d9a86?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="熊猫细节" class="gallery-image">
                     </div>
                     
-                    <div class="comments-section">
-                        <h3><i class="fas fa-comments"></i> 作品评论 <span id="commentsCount">(5)</span></h3>
-                        
-                        <div class="comments-list" id="commentsList">
-                            <div class="comment">
+                    <form class="comment-form">
+                        <input type="text" class="comment-input" placeholder="分享您的想法...">
+                        <button type="submit" class="comment-btn">评论</button>
+                    </form>
+                    
+                    <div class="comment-list">
+                        <div class="comment">
+                            <div class="comment-avatar">李</div>
+                            <div class="comment-content">
                                 <div class="comment-header">
-                                    <div class="comment-avatar">L</div>
-                                    <div>
-                                        <div class="comment-author">李女士</div>
-                                        <div class="comment-date">2023年11月15日</div>
-                                    </div>
+                                    <span class="comment-author">李梅</span>
+                                    <span class="comment-date">2023-08-15 14:30</span>
                                 </div>
-                                <div class="comment-content">
-                                    这个小熊太可爱了！我买了一个送给女儿，她爱不释手，每天都要抱着睡觉。
-                                    手工非常精致，针脚细密，质量很好！
-                                </div>
-                            </div>
-                            
-                            <div class="comment">
-                                <div class="comment-header">
-                                    <div class="comment-avatar">W</div>
-                                    <div>
-                                        <div class="comment-author">王小姐</div>
-                                        <div class="comment-date">2023年11月10日</div>
-                                    </div>
-                                </div>
-                                <div class="comment-content">
-                                    作为手工爱好者，这个小熊的细节处理让我印象深刻！特别是耳朵和脚的形状，
-                                    钩得非常完美。期待看到更多作品！
-                                </div>
+                                <p class="comment-text">太可爱了！请问这个熊猫宝宝有制作教程吗？想学着给女儿做一个。</p>
                             </div>
                         </div>
                         
-                        <div class="comment-form">
-                            <h3>发表您的评论</h3>
-                            <form id="commentForm">
-                                <div class="form-group">
-                                    <label for="commentName">您的姓名</label>
-                                    <input type="text" id="commentName" class="form-control" placeholder="例如：张先生" required>
+                        <div class="comment">
+                            <div class="comment-avatar">王</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author">王芳</span>
+                                    <span class="comment-date">2023-08-14 09:15</span>
                                 </div>
-                                <div class="form-group">
-                                    <label for="commentText">评论内容</label>
-                                    <textarea id="commentText" class="form-control" placeholder="分享您对这件作品的看法..." required></textarea>
+                                <p class="comment-text">眼睛的细节处理得太好了，请问用的什么材料？</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comment">
+                            <div class="comment-avatar">张</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author">张铁柱</span>
+                                    <span class="comment-date">2023-08-13 19:45</span>
                                 </div>
-                                <button type="submit" class="submit-btn">
-                                    <i class="fas fa-paper-plane"></i> 提交评论
-                                </button>
-                            </form>
+                                <p class="comment-text">感谢大家的喜欢！这个熊猫使用的是4股牛奶棉，眼睛是6mm安全眼。教程正在准备中，完成后会分享给大家。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 作品2 -->
+            <div class="work-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1527865118650-b28bc059d09a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="钩织花束" class="work-image">
+                    <div class="image-count"><i class="fas fa-images"></i> 7张</div>
+                </div>
+                <div class="work-info">
+                    <h3 class="work-title">永恒花束</h3>
+                    <div class="work-meta">
+                        <span><i class="far fa-calendar"></i> 2023-07-22</span>
+                        <span><i class="far fa-clock"></i> 40小时</span>
+                    </div>
+                    <p class="work-description">永不凋谢的钩织花束，包含玫瑰、向日葵和雏菊，为家居增添温馨氛围。</p>
+                    <button class="view-btn view-comments" data-id="2">查看详情与评论</button>
+                </div>
+                
+                <div class="comments-section" id="comments-2">
+                    <h3><i class="far fa-comments"></i> "永恒花束" 作品评论</h3>
+                    
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1527865118650-b28bc059d09a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="花束全景" class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="玫瑰特写" class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="向日葵特写" class="gallery-image">
+                    </div>
+                    
+                    <form class="comment-form">
+                        <input type="text" class="comment-input" placeholder="分享您的想法...">
+                        <button type="submit" class="comment-btn">评论</button>
+                    </form>
+                    
+                    <div class="comment-list">
+                        <div class="comment">
+                            <div class="comment-avatar">刘</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author">刘丽</span>
+                                    <span class="comment-date">2023-08-12 16:45</span>
+                                </div>
+                                <p class="comment-text">颜色搭配得太美了！放在客厅里每天看到心情都变好了。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comment">
+                            <div class="comment-avatar">陈</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author">陈明</span>
+                                    <span class="comment-date">2023-08-10 11:20</span>
+                                </div>
+                                <p class="comment-text">请问这些花束可以定制颜色吗？我想订一束作为结婚纪念日礼物。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 作品3 -->
+            <div class="work-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1596466596120-2a8e4b5d9a86?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="钩织毯子" class="work-image">
+                    <div class="image-count"><i class="fas fa-images"></i> 6张</div>
+                </div>
+                <div class="work-info">
+                    <h3 class="work-title">彩虹毯</h3>
+                    <div class="work-meta">
+                        <span><i class="far fa-calendar"></i> 2023-06-15</span>
+                        <span><i class="far fa-clock"></i> 120小时</span>
+                    </div>
+                    <p class="work-description">渐变彩虹色钩织毯，采用优质羊毛线，保暖舒适，尺寸150x200cm。</p>
+                    <button class="view-btn view-comments" data-id="3">查看详情与评论</button>
+                </div>
+                
+                <div class="comments-section" id="comments-3">
+                    <h3><i class="far fa-comments"></i> "彩虹毯" 作品评论</h3>
+                    
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1596466596120-2a8e4b5d9a86?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="毯子全景" class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1534337621606-e3df5ee0e97f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="细节特写" class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="使用场景" class="gallery-image">
+                    </div>
+                    
+                    <form class="comment-form">
+                        <input type="text" class="comment-input" placeholder="分享您的想法...">
+                        <button type="submit" class="comment-btn">评论</button>
+                    </form>
+                    
+                    <div class="comment-list">
+                        <div class="comment">
+                            <div class="comment-avatar">赵</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author">赵敏</span>
+                                    <span class="comment-date">2023-08-05 09:30</span>
+                                </div>
+                                <p class="comment-text">这个毯子太惊艳了！颜色过渡非常自然，手感也超级柔软。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comment">
+                            <div class="comment-avatar">孙</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author">孙伟</span>
+                                    <span class="comment-date">2023-07-28 17:15</span>
+                                </div>
+                                <p class="comment-text">请问这个毯子可以机洗吗？羊毛材质会不会缩水？</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comment">
+                            <div class="comment-avatar">张</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author">张铁柱</span>
+                                    <span class="comment-date">2023-07-25 14:20</span>
+                                </div>
+                                <p class="comment-text">感谢喜欢！这款毯子使用的是防缩羊毛，建议手洗后平铺晾干，可以保持最佳状态。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 作品4 -->
+            <div class="work-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="钩织围巾" class="work-image">
+                    <div class="image-count"><i class="fas fa-images"></i> 4张</div>
+                </div>
+                <div class="work-info">
+                    <h3 class="work-title">冬日暖阳围巾</h3>
+                    <div class="work-meta">
+                        <span><i class="far fa-calendar"></i> 2023-05-20</span>
+                        <span><i class="far fa-clock"></i> 35小时</span>
+                    </div>
+                    <p class="work-description">温暖舒适的羊毛围巾，采用双色条纹设计，长180cm，宽25cm。</p>
+                    <button class="view-btn view-comments" data-id="4">查看详情与评论</button>
+                </div>
+                
+                <div class="comments-section" id="comments-4">
+                    <h3><i class="far fa-comments"></i> "冬日暖阳围巾" 作品评论</h3>
+                    
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="围巾全景" class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="围巾细节" class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=400" alt="佩戴效果" class="gallery-image">
+                    </div>
+                    
+                    <form class="comment-form">
+                        <input type="text" class="comment-input" placeholder="分享您的想法...">
+                        <button type="submit" class="comment-btn">评论</button>
+                    </form>
+                    
+                    <div class="comment-list">
+                        <div class="comment">
+                            <div class="comment-avatar">周</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author">周华</span>
+                                    <span class="comment-date">2023-06-02 10:45</span>
+                                </div>
+                                <p class="comment-text">这个围巾看起来好温暖！请问是什么材质的？</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
+    <div class="modal" id="imageModal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
     <footer>
-        <div class="footer-content">
-            <div class="copyright">
-                &copy; 2023 手工钩织艺术 | 用心编织每一份温暖
+        <div class="container">
+            <h3>铁柱的钩织作品集</h3>
+            <p>一针一线，编织美好生活</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-weixin"></i></a>
+                <a href="#"><i class="fab fa-weibo"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-douban"></i></a>
             </div>
-            <p>所有作品均为手工制作，版权所有</p>
+            
+            <p class="copyright">© 2023 铁柱的钩织作品集 | 手工制作 | 版权所有</p>
         </div>
     </footer>
-    
+
     <script>
-        // 作品数据
-        const works = {
-            1: {
-                title: "森林小熊",
-                description: "这款森林小熊使用高品质纯棉线手工钩织而成，高约25厘米。小熊采用棕色和米色搭配，眼睛和鼻子使用安全纽扣缝制，确保儿童使用安全。每一个小熊都经过精心制作，确保针脚均匀紧密，手感柔软舒适。",
-                size: "25cm",
-                color: "棕色/米色",
-                date: "2023年10月",
-                img: "https://images.unsplash.com/photo-1596466596120-2a8e4b5d3a1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-                comments: 5
-            },
-            2: {
-                title: "彩虹毯子",
-                description: "这款彩虹毯子使用羊毛混纺线手工钩织而成，尺寸为120x150厘米。采用七种柔和的彩虹色设计，每一行都精心编织，确保毯子柔软舒适且耐用。毯子边缘采用特殊的锁边设计，增加了耐用性和美观度。",
-                size: "120x150cm",
-                color: "彩虹七色",
-                date: "2023年8月",
-                img: "https://images.unsplash.com/photo-1614179689702-355944cd0918?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-                comments: 7
-            },
-            3: {
-                title: "夏日草编包",
-                description: "夏日草编包采用棉麻混纺材质手工钩编而成，包身设计有独特的镂空花纹，既美观又透气。包包配有内衬和拉链袋，增加了实用性。手柄采用双层编织设计，结实耐用，可轻松容纳日常必需品。",
-                size: "30x35cm",
-                color: "米白色",
-                date: "2023年7月",
-                img: "https://images.unsplash.com/photo-1587314168485-3236d67108c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-                comments: 4
-            }
-        };
-
-        // 获取DOM元素
-        const detailView = document.getElementById('detailView');
-        const detailTitle = document.getElementById('detailTitle');
-        const detailImage = document.getElementById('detailImage');
-        const detailDescription = document.getElementById('detailDescription');
-        const detailSize = document.getElementById('detailSize');
-        const detailColor = document.getElementById('detailColor');
-        const detailDate = document.getElementById('detailDate');
-        const commentsCount = document.getElementById('commentsCount');
-        const commentsList = document.getElementById('commentsList');
-        const closeBtn = document.querySelector('.close-detail');
-        const commentForm = document.getElementById('commentForm');
-
-        // 为每个作品添加点击事件
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const id = this.getAttribute('data-id');
-                const work = works[id];
-                
-                // 更新详情内容
-                detailTitle.textContent = work.title;
-                detailImage.src = work.img;
-                detailDescription.textContent = work.description;
-                detailSize.textContent = work.size;
-                detailColor.textContent = work.color;
-                detailDate.textContent = work.date;
-                commentsCount.textContent = `(${work.comments})`;
-                
-                // 显示详情视图
-                detailView.classList.add('active');
-                document.body.style.overflow = 'hidden'; // 防止背景滚动
+        document.addEventListener('DOMContentLoaded', function() {
+            // 切换评论区的显示
+            const viewButtons = document.querySelectorAll('.view-comments');
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const commentsId = 'comments-' + this.getAttribute('data-id');
+                    const commentsSection = document.getElementById(commentsId);
+                    
+                    // 隐藏所有评论区
+                    document.querySelectorAll('.comments-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // 切换当前评论区
+                    commentsSection.classList.toggle('active');
+                    
+                    // 滚动到评论区
+                    if (commentsSection.classList.contains('active')) {
+                        commentsSection.scrollIntoView({behavior: "smooth", block: "start"});
+                    }
+                });
             });
-        });
-
-        // 关闭详情视图
-        closeBtn.addEventListener('click', function() {
-            detailView.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        // 点击详情视图背景关闭
-        detailView.addEventListener('click', function(e) {
-            if (e.target === detailView) {
-                detailView.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // 评论提交
-        commentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
             
-            const name = document.getElementById('commentName').value;
-            const comment = document.getElementById('commentText').value;
+            // 评论表单提交
+            const commentForms = document.querySelectorAll('.comment-form');
+            commentForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const input = this.querySelector('.comment-input');
+                    const commentText = input.value.trim();
+                    
+                    if (commentText) {
+                        addComment(this, commentText);
+                        input.value = '';
+                    }
+                });
+            });
             
-            if (name && comment) {
-                // 创建新评论
-                const newComment = document.createElement('div');
-                newComment.className = 'comment';
+            function addComment(form, text) {
+                const commentList = form.nextElementSibling;
+                const now = new Date();
                 
-                // 生成随机头像字母
-                const avatarLetter = name.charAt(0).toUpperCase();
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment';
                 
-                newComment.innerHTML = `
-                    <div class="comment-header">
-                        <div class="comment-avatar">${avatarLetter}</div>
-                        <div>
-                            <div class="comment-author">${name}</div>
-                            <div class="comment-date">${new Date().toLocaleDateString('zh-CN')}</div>
-                        </div>
-                    </div>
-                    <div class="comment-content">
-                        ${comment}
-                    </div>
-                `;
+                const avatarDiv = document.createElement('div');
+                avatarDiv.className = 'comment-avatar';
+                avatarDiv.textContent = '访';
                 
-                // 添加到评论列表顶部
-                commentsList.insertBefore(newComment, commentsList.firstChild);
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'comment-content';
                 
-                // 更新评论计数
-                const currentComments = parseInt(commentsCount.textContent.replace(/[()]/g, ''));
-                commentsCount.textContent = `(${currentComments + 1})`;
+                const headerDiv = document.createElement('div');
+                headerDiv.className = 'comment-header';
                 
-                // 重置表单
-                document.getElementById('commentName').value = '';
-                document.getElementById('commentText').value = '';
+                const authorSpan = document.createElement('span');
+                authorSpan.className = 'comment-author';
+                authorSpan.textContent = '新访客';
                 
-                // 显示成功消息
-                alert('您的评论已提交，感谢您的反馈！');
+                const dateSpan = document.createElement('span');
+                dateSpan.className = 'comment-date';
+                dateSpan.textContent = now.toLocaleDateString() + ' ' + now.toLocaleTimeString().slice(0,5);
+                
+                const textP = document.createElement('p');
+                textP.className = 'comment-text';
+                textP.textContent = text;
+                
+                headerDiv.appendChild(authorSpan);
+                headerDiv.appendChild(dateSpan);
+                contentDiv.appendChild(headerDiv);
+                contentDiv.appendChild(textP);
+                
+                commentDiv.appendChild(avatarDiv);
+                commentDiv.appendChild(contentDiv);
+                
+                commentList.insertBefore(commentDiv, commentList.firstChild);
             }
+            
+            // 图片模态框
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeModal = document.querySelector('.close');
+            
+            document.querySelectorAll('.gallery-image').forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.style.display = 'flex';
+                    modalImg.src = this.src;
+                });
+            });
+            
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
         });
     </script>
 </body>
